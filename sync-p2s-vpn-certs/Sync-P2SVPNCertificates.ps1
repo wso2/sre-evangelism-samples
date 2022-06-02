@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------------------
 #
-# Copyright (c) 20022, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+# Copyright (c) 2022, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,8 +27,11 @@
             VPN Gateway.
 #>
 
-# Function to extract certificate content from .pem
-Function GetCertificateContent {
+<#
+.DESCRIPTION
+    Get-CertificateContent function extracts the certificate content from provided .pem
+#>
+Function Get-CertificateContent {
 
     param (
         [Parameter(Mandatory)]
@@ -103,7 +106,7 @@ foreach ($Cert in $CertificatesToAdd) {
 
     Write-Output ("Adding certificate: $Cert to VPN Gateway")
 
-    $CertificateContent = GetCertificateContent -CertPath "${OutputFolder}\${OutputPath}\${Cert}.pem"
+    $CertificateContent = Get-CertificateContent -CertPath "${OutputFolder}\${OutputPath}\${Cert}.pem"
     $Output             = Add-AzVpnClientRootCertificate -PublicCertData $CertificateContent -ResourceGroupName $ResourceGroupName -VirtualNetworkGatewayName $VirtualNetworkGatewayName -VpnClientRootCertificateName $Cert
 
     # Handle error scenario
