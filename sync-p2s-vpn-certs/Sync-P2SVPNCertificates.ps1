@@ -28,8 +28,15 @@
 #>
 
 <#
-.DESCRIPTION
-    Get-CertificateContent function extracts the certificate content from provided .pem
+    .SYNOPSIS
+        Function to extract certificate content
+
+    .DESCRIPTION
+        Get-CertificateContent function extracts the certificate content from provided .pem
+    
+    .PARAMETER CertificatePath
+        Path where .pem certificate resides
+
 #>
 Function Get-CertificateContent {
 
